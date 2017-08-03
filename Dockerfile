@@ -9,8 +9,10 @@ USER root
 # Install google-cloud-sdk
 RUN echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list && \
   curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - && \
+  echo deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main > /etc/apt/sources.list.d/pgdg.list && \
+  wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
   apt-get update -y && \
-  apt-get install -y jq git make curl google-cloud-sdk kubectl && \
+  apt-get install -y jq git make curl google-cloud-sdk kubectl postgresql-client-9.5 && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/*
 
