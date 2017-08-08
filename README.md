@@ -10,3 +10,4 @@ Container has:
  * helm
  * docker
  * kubectl
+ * chromedriver
